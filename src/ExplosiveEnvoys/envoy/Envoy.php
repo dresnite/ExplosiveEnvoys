@@ -79,7 +79,7 @@ class Envoy {
     }
     
     public function update() {
-        if($this->timer >= 0) {
+        if($this->timer > 0) {
             $this->timer--;
             $this->updateParticle();
         } else {

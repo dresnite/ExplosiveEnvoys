@@ -116,11 +116,12 @@ class EnvoyManager {
             $this->timer--;
         } else {
             $settings = $this->plugin->getSettings();
-            for($i = 0; $i < $settings["envoysToSpawn"]; $i++) {
+            for($i = 1; $i <= $settings["envoysToSpawn"]; $i++) {
                 $level = $this->worlds[array_rand($this->worlds)];
                 $position = $level->getSafeSpawn(new Vector3(rand(201, 1500), rand(1, 100), rand(201, 1500)));
                 $this->spawnEnvoy($position);
                 $this->plugin->getServer()->broadcastMessage($this->plugin->getMessage("ENVOY_SPAWNED", [
+                    "num" => $i,
                     "level" => $position->getLevel()->getName(),
                     "x" => $position->getFloorX(),
                     "y" => $position->getFloorY(),

@@ -1,4 +1,4 @@
 {
   "TIMER_MESSAGE": "§k ||| §r §3The envoy will explode in §f{time} §3seconds §f§k ||| §r ",
-  "ENVOY_SPAWNED": "§3An envoy was spawned in §f{level} §3in the coords\n§3x: {x} - y: {y} - z: {z}"
+  "ENVOY_SPAWNED": "{num}. §3An envoy was spawned in §f{level} §3in the coords\n§3x: {x} - y: {y} - z: {z}\n"
 }

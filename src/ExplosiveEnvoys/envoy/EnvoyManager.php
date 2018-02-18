@@ -51,6 +51,10 @@ class EnvoyManager {
                 $this->worlds[] = $server->getLevelByName($world);
             }
         }
+        if(empty($this->worlds)) {
+            $this->plugin->getLogger()->warning("ExplosiveEnvoys failed because there are no worlds available!");
+            $this->plugin->getServer()->getPluginManager()->disablePlugin($this->plugin);
+        }
         $plugin->getServer()->getScheduler()->scheduleRepeatingTask(new EnvoyTask($plugin), 20);
     }
     

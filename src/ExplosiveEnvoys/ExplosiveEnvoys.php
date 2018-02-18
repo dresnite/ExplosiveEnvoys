@@ -10,6 +10,7 @@ namespace ExplosiveEnvoys;
 
 use ExplosiveEnvoys\envoy\EnvoyManager;
 use pocketmine\item\enchantment\Enchantment;
+use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\level\Position;
 use pocketmine\plugin\PluginBase;
@@ -114,7 +115,7 @@ class ExplosiveEnvoys extends PluginBase {
         if(isset($array[1])) {
             $item = Item::get($array[0], 0, $array[1]);
             if(isset($array[3])) {
-                $item->addEnchantment(Enchantment::getEnchantment($array[2])->setLevel($array[3]));
+                $item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment($array[2]),($array[3])));
             }
             return $item;
         }

@@ -9,6 +9,7 @@ namespace ExplosiveEnvoys;
 
 
 use ExplosiveEnvoys\envoy\EnvoyManager;
+use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\level\Position;

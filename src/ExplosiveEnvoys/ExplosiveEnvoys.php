@@ -81,9 +81,7 @@ class ExplosiveEnvoys extends PluginBase {
      * @return string
      */
     public static function printSeconds($seconds): string {
-        $m = floor($seconds / 60);
-        $s = floor($seconds % 60);
-        return (($m < 10 ? "0" : "") . $m . ":" . ($s < 10 ? "0" : "") . (string) $s);
+        return ((($m = floor($seconds / 60)) < 10 ? "0" : "") . $m . ":" . (($s = floor($seconds % 60)) < 10 ? "0" : "") . (string) $s);
     }
     
     /**
@@ -93,7 +91,7 @@ class ExplosiveEnvoys extends PluginBase {
      * @param Position $position2
      * @return bool
      */
-    public static function comparePositions(Position $position, Position $position2) {
+    public static function comparePositions(Position $position, Position $position2): bool {
         if($position->getFloorX() == $position2->getFloorX() and $position->getFloorY() == $position2->getFloorY() and
             $position->getFloorZ() == $position2->getFloorZ() and $position2->getLevel() === $position->getLevel()) {
             return true;
@@ -109,7 +107,7 @@ class ExplosiveEnvoys extends PluginBase {
      * @param string $string
      * @return null|Item
      */
-    public static function parseItem($string) {
+    public static function parseItem($string): ?Item {
         $array = explode(",", $string);
         foreach($array as $key => $value) {
             $array[$key] = (int) $value;
@@ -130,9 +128,9 @@ class ExplosiveEnvoys extends PluginBase {
      * Parse items
      *
      * @param array $array
-     * @return array
+     * @return []Item
      */
-    public static function parseItems($array) {
+    public static function parseItems($array): array {
         $items = [];
         foreach($array as $item) {
             $item = self::parseItem($item);

@@ -96,7 +96,7 @@ class Envoy {
         ]));
         foreach($plugin->getServer()->getOnlinePlayers() as $player) {
             foreach($this->particle->encode() as $packet) {
-                $player->dataPacket($packet);
+                $player->sendDataPacket($packet);
             }
         }
     }

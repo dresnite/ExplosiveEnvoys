@@ -55,7 +55,7 @@ class EnvoyManager {
             $this->plugin->getLogger()->warning("ExplosiveEnvoys failed because there are no worlds available!");
             $this->plugin->getServer()->getPluginManager()->disablePlugin($this->plugin);
         }
-        $plugin->getServer()->getScheduler()->scheduleRepeatingTask(new EnvoyTask($plugin), 20);
+        $plugin->getScheduler()->scheduleRepeatingTask(new EnvoyTask($plugin), 20);
     }
     
     /**

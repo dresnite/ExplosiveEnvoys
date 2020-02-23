@@ -53,25 +53,17 @@ class EnvoyManager {
             $this->plugin->getServer()->getPluginManager()->disablePlugin($this->plugin);
         }
         $plugin->getScheduler()->scheduleRepeatingTask(new EnvoyTask($this), 20);
+        $plugin->getServer()->getPluginManager()->registerEvents(new EnvoyListener($this), $plugin);
     }
-    
-    /**
-     * @return ExplosiveEnvoys
-     */
+
     public function getPlugin(): ExplosiveEnvoys {
         return $this->plugin;
     }
-    
-    /**
-     * @return Envoy[]
-     */
+
     public function getEnvoys(): array {
         return $this->envoys;
     }
-    
-    /**
-     * @param Position $position
-     */
+
     public function spawnEnvoy(Position $position) {
         $nbt = new CompoundTag("", [
             new ListTag("Items", []),
@@ -96,10 +88,6 @@ class EnvoyManager {
         $this->envoys[] = new Envoy($this, $position, $this->plugin->getSettings());
     }
     
-    /**
-     * @param Envoy $envoy
-     * @param bool $forceDisappear
-     */
     public function despawnEnvoy(Envoy $envoy, bool $forceDisappear = false) {
         $position = $envoy->getPosition();
         $envoy->getParticle()->setInvisible();

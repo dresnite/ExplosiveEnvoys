@@ -37,7 +37,6 @@ class ExplosiveEnvoys extends PluginBase {
     
     public function onEnable() {
         $this->envoyManager = new EnvoyManager($this);
-        $this->getServer()->getPluginManager()->registerEvents(new ExplosiveEnvoysListener($this), $this);
     }
     
     /**

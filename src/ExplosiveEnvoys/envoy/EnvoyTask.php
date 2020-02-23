@@ -10,31 +10,22 @@
 namespace ExplosiveEnvoys\envoy;
 
 
-use ExplosiveEnvoys\ExplosiveEnvoys;
 use pocketmine\scheduler\Task;
 
 class EnvoyTask extends Task {
-    
-    /** @var ExplosiveEnvoys */
-    protected $owner;
-    
-    /**
-     * EnvoyTask constructor.
-     * @param ExplosiveEnvoys $owner
-     */
-    public function __construct(ExplosiveEnvoys $owner) {
-        $this->owner = $owner;
+
+    /** @var EnvoyManager */
+    private $manager;
+
+    public function __construct(EnvoyManager $manager) {
+        $this->manager = $manager;
     }
     
     /**
      * @param int $currentTick
      */
     public function onRun(int $currentTick): void {
-        $manager = $this->owner->getEnvoyManager();
-        $manager->update();
-        foreach($manager->getEnvoys() as $envoy) {
-            $envoy->update();
-        }
+        $this->manager->update();
     }
     
 }

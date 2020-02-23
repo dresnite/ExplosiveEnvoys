@@ -38,11 +38,7 @@ class EnvoyManager {
     
     /** @var Level[] */
     private $worlds = [];
-    
-    /**
-     * EnvoyManager constructor.
-     * @param ExplosiveEnvoys $plugin
-     */
+
     public function __construct(ExplosiveEnvoys $plugin) {
         $this->plugin = $plugin;
         $this->timer = $plugin->getSettings()["spawnTime"];
@@ -56,7 +52,7 @@ class EnvoyManager {
             $this->plugin->getLogger()->warning("ExplosiveEnvoys failed because there are no worlds available!");
             $this->plugin->getServer()->getPluginManager()->disablePlugin($this->plugin);
         }
-        $plugin->getScheduler()->scheduleRepeatingTask(new EnvoyTask($plugin), 20);
+        $plugin->getScheduler()->scheduleRepeatingTask(new EnvoyTask($this), 20);
     }
     
     /**
@@ -136,6 +132,10 @@ class EnvoyManager {
                 ]));
                 $this->timer = $settings["spawnTime"];
             }
+        }
+
+        foreach($this->envoys as $envoy) {
+            $envoy->update();
         }
     }
     

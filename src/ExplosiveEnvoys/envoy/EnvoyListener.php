@@ -4,7 +4,6 @@
 namespace ExplosiveEnvoys\envoy;
 
 
-use ExplosiveEnvoys\utils\Utils;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 
@@ -19,7 +18,7 @@ class EnvoyListener implements Listener {
 
     public function onBreak(BlockBreakEvent $event) {
         foreach($this->manager->getEnvoys() as $envoy) {
-            if(Utils::comparePositions($envoy->getPosition(), $event->getBlock())) {
+            if($envoy->getPosition()->equals($event->getBlock())) {
                 $this->manager->despawnEnvoy($envoy);
             }
         }

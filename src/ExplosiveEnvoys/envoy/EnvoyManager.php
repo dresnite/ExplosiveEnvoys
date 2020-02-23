@@ -60,6 +60,9 @@ class EnvoyManager {
         return $this->plugin;
     }
 
+    /**
+     * @return Envoy[]
+     */
     public function getEnvoys(): array {
         return $this->envoys;
     }

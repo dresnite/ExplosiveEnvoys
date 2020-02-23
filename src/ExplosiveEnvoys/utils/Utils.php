@@ -7,7 +7,6 @@ namespace ExplosiveEnvoys\utils;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
-use pocketmine\level\Position;
 
 class Utils {
 
@@ -15,13 +14,8 @@ class Utils {
         return gmdate("i:s", $seconds);
     }
 
-    public static function comparePositions(Position $position, Position $position2): bool {
-        return $position->getFloorX() == $position2->getFloorX() and $position->getFloorY() == $position2->getFloorY() and
-        $position->getFloorZ() == $position2->getFloorZ() and $position2->getLevel() === $position->getLevel();
-    }
-
-    public static function parseItem($string): ?Item {
-        $array = explode(",", $string);
+    public static function parseItem(string $itemString): ?Item {
+        $array = explode(",", $itemString);
         foreach($array as $key => $value) {
             $array[$key] = (int) $value;
         }
@@ -37,15 +31,15 @@ class Utils {
         }
     }
 
-    public static function parseItems($array): array {
-        $items = [];
-        foreach($array as $item) {
+    public static function parseItems(array $itemStrings): array {
+        $resultItems = [];
+        foreach($itemStrings as $item) {
             $item = self::parseItem($item);
             if($item instanceof Item) {
-                $items[] = $item;
+                $resultItems[] = $item;
             }
         }
-        return $items;
+        return $resultItems;
     }
 
 }

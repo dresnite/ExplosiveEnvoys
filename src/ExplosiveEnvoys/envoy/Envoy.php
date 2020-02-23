@@ -10,7 +10,7 @@
 namespace ExplosiveEnvoys\envoy;
 
 
-use ExplosiveEnvoys\ExplosiveEnvoys;
+use ExplosiveEnvoys\utils\Utils;
 use pocketmine\level\particle\FloatingTextParticle;
 use pocketmine\level\Position;
 use pocketmine\math\Vector3;
@@ -92,7 +92,7 @@ class Envoy {
     public function updateParticle() {
         $plugin = $this->manager->getPlugin();
         $this->particle->setTitle($plugin->getMessage("TIMER_MESSAGE", [
-            "time" => ExplosiveEnvoys::printSeconds($this->timer)
+            "time" => Utils::printSeconds($this->timer)
         ]));
         foreach($plugin->getServer()->getOnlinePlayers() as $player) {
             foreach($this->particle->encode() as $packet) {

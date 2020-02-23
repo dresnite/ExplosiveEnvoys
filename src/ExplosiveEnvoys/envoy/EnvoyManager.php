@@ -11,6 +11,7 @@ namespace ExplosiveEnvoys\envoy;
 
 
 use ExplosiveEnvoys\ExplosiveEnvoys;
+use ExplosiveEnvoys\utils\Utils;
 use pocketmine\block\Block;
 use pocketmine\level\Explosion;
 use pocketmine\level\Level;
@@ -91,7 +92,7 @@ class EnvoyManager {
         $level->addTile($chest);
     
         $items = $this->plugin->getSettings()["content"];
-        $items = ExplosiveEnvoys::parseItems($items);
+        $items = Utils::parseItems($items);
         for($i = 0; $i < rand(3, 20); $i++) {
             $chest->getInventory()->addItem($items[array_rand($items)]);
         }

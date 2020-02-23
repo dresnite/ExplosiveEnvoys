@@ -42,11 +42,6 @@ class ExplosiveEnvoys extends PluginBase {
     public function onEnable() {
         $this->envoyManager = new EnvoyManager($this);
         $this->getServer()->getPluginManager()->registerEvents(new ExplosiveEnvoysListener($this), $this);
-        $this->getLogger()->info("ExplosiveEnvoys by @GiantQuartz was enabled");
-    }
-    
-    public function onDisable() {
-        $this->getLogger()->info("ExplosiveEnvoys by @GiantQuartz was disabled");
     }
     
     /**

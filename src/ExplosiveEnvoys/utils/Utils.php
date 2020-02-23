@@ -16,13 +16,8 @@ class Utils {
     }
 
     public static function comparePositions(Position $position, Position $position2): bool {
-        if($position->getFloorX() == $position2->getFloorX() and $position->getFloorY() == $position2->getFloorY() and
-            $position->getFloorZ() == $position2->getFloorZ() and $position2->getLevel() === $position->getLevel()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return $position->getFloorX() == $position2->getFloorX() and $position->getFloorY() == $position2->getFloorY() and
+        $position->getFloorZ() == $position2->getFloorZ() and $position2->getLevel() === $position->getLevel();
     }
 
     public static function parseItem($string): ?Item {
@@ -41,7 +36,7 @@ class Utils {
             return null;
         }
     }
-    
+
     public static function parseItems($array): array {
         $items = [];
         foreach($array as $item) {
